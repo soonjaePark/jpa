@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/js/common.js"></script>
+    </head>
+    <body>
+        <h3>검색 버튼 클릭 시 학생의 정보가 조회됩니다.</h3>
+        <form id="dataForm" action="/" method="post">
+        <table border="1" width="100%">
+        <thead>
+            <tr>
+                <th>No</th> <th>이름</th> <th>학과</th> <th>나이</th> <th>학년</th>
+            </tr>
+        </thead><br>
+        <tbody id="st_info" name="st_info">
+        </tbody><br>
+        <tfoot>
+            <button type="button" id="search">검색</button>
+        </tfoot>
+        </table>
+        </form>
+    </body>
+    <script>
+        const t_body = document.getElementById("st_info");
+        const search_btn = document.getElementById('search');
+
+        search_btn.addEventListener('click',(e)=>{
+            a();
+            console.log("버튼 클릭 됨");
+        })
+
+        function a(){
+
+            postJsonWithForm("dataForm", function(result){
+                console.log(result);
+                _innerHTML = '';
+
+                t_body.innerHTML = '';
+                result.forEach((element, index , arr) => {
+                    _innerHTML += '<tr>'
+                    _innerHTML += '<td>'+(index+1)+'</td>';
+                    _innerHTML += '<td>'+element.user_name+'</td>';
+                    _innerHTML += '<td>'+element.department+'</td>';
+                    _innerHTML += '<td>'+element.age+'</td>';
+                    _innerHTML += '<td>'+element.level+'</td>';
+                    _innerHTML += '<tr>'
+                });
+
+                t_body.innerHTML = _innerHTML;
+            })
+        }
+
+    </script>
+</html>
