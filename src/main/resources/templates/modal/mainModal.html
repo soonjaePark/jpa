@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <script src="/vendor/jquery-3.6.0/jquery-3.6.0.min.js"
+        th:src="@{/vendor/jquery-3.6.0/jquery-3.6.0.min.js}"></script>
+    <script src="/vendor/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"
+        th:src="@{/vendor/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js}"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link href="/vendor/bootstrap-5.1.3-dist/css/bootstrap.min.css"
+        th:href="@{/vendor/bootstrap-5.1.3-dist/css/bootstrap.min.css}" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<div class="modal" tabindex="-1" id="main_modal" aria-labelledby="logs-params-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">학생 정보 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form name="insert_form" action="/list/save">
+                <div class="modal-body">
+                    <div>
+                        <label>학생이름</label>
+                        <input type="text" class="form-control" name="user_name">
+                    </div>
+                    <div>
+                        <label>학과</label>
+                        <input type="text" class="form-control" name="department">
+                    </div>
+                    <div>
+                        <label>나이</label>
+                        <input type="text" class="form-control" name="age">
+                    </div>
+                    <div>
+                        <label>학년</label>
+                        <select class="form-select" name="level">
+                            <option value="1" selected>1학년</option>
+                            <option value="2">2학년</option>
+                            <option value="3">3학년</option>
+                            <option value="4">4학년</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="insert_btn">추가</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--세부사항-->
+<div class="modal" tabindex="-1" id="detail_modal" aria-labelledby="logs-params-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">학생 정보 추가</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="update_form" name="update_form" action="/list/update" method="post">
+                <input type="hidden" name="seq" value="0">
+                <div class="modal-body">
+                    <div>
+                        <label>학생이름</label>
+                        <input type="text" class="form-control" name="user_name" id="user_name">
+                    </div>
+                    <div>
+                        <label>학과</label>
+                        <input type="text" class="form-control" name="department" id="department">
+                    </div>
+                    <div>
+                        <label>나이</label>
+                        <input type="text" class="form-control" name="age" id="age">
+                    </div>
+                    <div>
+                        <label>학년</label>
+                        <select class="form-select" id="level" name="level">
+                            <option value="1" selected>1학년</option>
+                            <option value="2">2학년</option>
+                            <option value="3">3학년</option>
+                            <option value="4">4학년</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" id="update_btn">수정</button>
+                    <button type="button" class="btn btn-danger" id="delete_btn">삭제</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/main_modal.js}"></script>
+
+</html>
